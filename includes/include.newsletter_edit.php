@@ -105,6 +105,7 @@ if ($action == "news_create" && $perm->have_perm_area_action($area, "news_create
 	$oNewsletter = new Newsletter($idnewsletter);
 		
 	if ($oNewsletter->get("type") == "html" && $oNewsletter->get("idart") > 0) {
+		cInclude('includes', 'functions.con.php');
 		conDeleteArt($oNewsletter->get("idart"));
 	}
 	

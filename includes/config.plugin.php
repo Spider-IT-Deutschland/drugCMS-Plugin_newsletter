@@ -132,10 +132,13 @@ function pinlCreateDbTables($db, $cfg) {
 if (!$db) {
     $db = new DB_Contenido();
 }
-$sql = 'SELECT idnews
-        FROM ' . $cfg['sql']['sqlprefix'] . '_news
-        LIMIT 0, 1';
-if (!$db->query($sql)) {
+#$sql = 'SELECT idnews
+#        FROM ' . $cfg['sql']['sqlprefix'] . '_news
+#        LIMIT 0, 1';
+#if (!$db->query($sql)) {
+$sql = 'SHOW TABLES LIKE "' . $cfg['sql']['sqlprefix'] . '_news"';
+$db->query($sql);
+if (!$db->num_rows()) {
     pinlCreateDbTables($db, $cfg);
 }
 
